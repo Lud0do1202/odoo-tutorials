@@ -7,7 +7,7 @@
             <list string="Properties" decoration-muted="state == 'cancelled'" decoration-success="state in ['sold', 'offer_accepted']" decoration-bf="state == 'sold'" decoration-info="state == 'new'">
                 <field name="name"/>
                 <field name="postcode"/>
-                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                 <field name="bedrooms"/>
                 <field name="living_area"/>
                 <field name="expected_price"/>
@@ -28,7 +28,7 @@
                         <widget name="web_ribbon" title="new" bg_color="text-bg-info" t-if="record.state.raw_value == 'new'"/>
                         <div>
                             <field name="name" class="fw-bold fs-4"/>
-                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" />
                             <table class="mt-2">
                                 <tr>
                                     <td class="pe-2">Expected Price</td>

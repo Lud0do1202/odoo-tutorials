@@ -3,9 +3,11 @@
     'version': '1.0',
     'description': 'Real Estate Management System',
     'summary': 'Real Estate Management System',
+    'category': 'Real Estate/Brokerage',
     'license': 'LGPL-3',
     'depends': ['base'],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/estate_property_offer.xml',
         'views/estate_property_tag.xml',

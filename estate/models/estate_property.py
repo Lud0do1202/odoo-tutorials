@@ -54,6 +54,13 @@ class EstateProperty(models.Model):
     )
     offer_ids = fields.One2many('estate.property.offer', 'property_id', 'Offers')
     active = fields.Boolean('Active', default=True)
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        string='Company',
+        required=True,
+        readonly=True,
+        default=lambda self: self.env.company,
+    )
 
     ###### COMPUTE ######
     @api.depends('living_area', 'garden_area')

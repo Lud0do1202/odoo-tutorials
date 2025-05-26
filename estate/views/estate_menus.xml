@@ -5,7 +5,7 @@
             <menuitem id="advertissements_property_menu" name="Properties" action="estate_property_action" sequence="10"/>
         </menuitem>
 
-        <menuitem id="settings_menu" name="Settings" sequence="20">
+        <menuitem id="settings_menu" name="Settings" sequence="20" groups="estate.estate_group_manager">
             <menuitem id="settings_property_types_menu" name="Property Types" action="estate_property_types_action" sequence="10"/>
             <menuitem id="settings_property_tags_menu" name="Property Tags" action="estate_property_tags_action" sequence="20"/>
         </menuitem>

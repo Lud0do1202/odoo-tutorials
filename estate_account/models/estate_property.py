@@ -8,11 +8,13 @@ class EstateProperty(models.Model):
         """
         Create an invoice for the property sale
         """
+
+        self.check_access('write')
         result = super().action_sold()
         if not result:
             return result
 
-        self.env['account.move'].create(
+        self.env['account.move'].sudo().create(
             {
                 'move_type': 'out_invoice',
                 'partner_id': self.buyer_id.id,
