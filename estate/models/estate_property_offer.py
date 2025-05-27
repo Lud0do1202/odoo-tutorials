@@ -63,10 +63,14 @@ class EstatePropertyOffer(models.Model):
                 raise ValidationError(_('Price and Property ID are required.'))
             property_id = self.env['estate.property'].browse(val_property_id)
             if not property_id:
-                raise ValidationError(_(f'Property with ID {val_property_id} does not exist.'))
+                raise ValidationError(_('Property with ID %s does not exist.') % val_property_id)
+            if property_id.state not in ['new', 'offer_received']:
+                raise ValidationError(_('Cannot create an offer for a property in state %s.') % property_id.state)
             best_price = property_id.best_price
             if float_compare(val_price, best_price, precision_digits=2) <= 0:
-                raise ValidationError(_(f'The offer price must be higher than the current best price (${best_price}).'))
+                raise ValidationError(
+                    _('The offer price must be higher than the current best price ($ %s).') % best_price
+                )
 
             if property_id.state == 'new':
                 property_id.state = 'offer_received'
@@ -105,5 +109,5 @@ class EstatePropertyOffer(models.Model):
             min_offer_price = record.property_id.expected_price * 0.9
             if float_compare(record.price, min_offer_price, precision_digits=2) < 0:
                 raise ValidationError(
-                    _(f'The offer price must be at least 90% of the expected price (${min_offer_price}).')
+                    _('The offer price must be at least 90%% of the expected price ($ %s).') % min_offer_price
                 )
